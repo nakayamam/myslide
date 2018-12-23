@@ -7,9 +7,11 @@ https://github.com/docker/compose-on-kubernetes
 - SIMPLIFYING KUBERNETES WITH DOCKER COMPOSE AND FRIENDS
 https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-friends/
 
->Compose on Kubernetesを使用すると、Docker ComposeファイルをKubernetesクラスタに展開できます。
->任意のKubernetesクラスタでこの機能を使用することができます。
->素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となります。そこで、開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化する抽象化を提供します。
+> Compose on Kubernetesを使用すると、Docker ComposeファイルをKubernetesクラスタに展開できます。
+> 任意のKubernetesクラスタでこの機能を使用することができます。
+> 素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となります。そこで、開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化する抽象化を提供します。
+
+---
 
 ## 経緯
 1. 今年の初めにdockerとKubernetesの統合を進める話があり、docker-for-desktopのedge版ではkube-composeという名前でCRDとして実装されていた。
@@ -20,6 +22,8 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
 <https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md>より引用
 
+---
+
 ### サーバーサイド
 - API server
 - Compose controller
@@ -28,15 +32,19 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 Docker CLIの実装
 v1beta1/v2beta2があるが、前者は廃止、後者がデフォルトにする予定
 
+---
+
 ## 現状
 - Docker Desktop と Docker Enterpriseにインストール済
 - AKSには自力でetcdとか色々作成すればインストールできる<https://github.com/docker/compose-on-kubernetes/blob/master/docs/install-on-aks.md>
 - 同じ要領でGKEへのインストールを行ってもうまく動かない(コンポーネントのインストール自体はできるが、`docker stack deploy`時に失敗する)
 <https://github.com/docker/compose-on-kubernetes/issues/21>
 
->dokcer-cli自体がgcp認証プロバイダをインポートしないため、cli自体がgkeに対して認証できないことが問題の原因です。cli修正のPRを作成するつもりです。
+> dokcer-cli自体がgcp認証プロバイダをインポートしないため、cli自体がgkeに対して認証できないことが問題の原因です。cli修正のPRを作成するつもりです。
 
 とのこと。順次、対応クラスターが増えていくと思われる。
+
+---
 
 ## docker-for-desktopで試してみた
 
@@ -66,6 +74,7 @@ NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
 svc/compose-api   ClusterIP   10.106.134.97   <none>        443/TCP   24d
 ```
 
+---
 
 下記のdocker-compose.ymlを使用（dockerconのサンプル画面が映るだけのデモアプリ）
 ```
@@ -91,6 +100,8 @@ services:
      - "33000:80"
 ```
 
+---
+
 デプロイする
 ```
 $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
@@ -106,6 +117,9 @@ words: Ready		[pod status: 5/5 ready, 0/5 pending, 0/5 failed]
 
 Stack hellokube is stable and running
 ```
+
+---
+
 
 各種Kubernetesリソースが自動作成されている
 ```
@@ -136,12 +150,18 @@ svc/hello-web-published    LoadBalancer   10.107.199.168   localhost     33000:3
 svc/words                  ClusterIP      None             <none>        55555/TCP         50m
 ```
 
+---
+
+
 stackというKubernetesリソースとして作成されている
 ```
 $ kubectl get stack
 NAME         AGE
 hellokube    53m
 ```
+
+
+---
 
 
 

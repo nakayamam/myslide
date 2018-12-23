@@ -18,6 +18,8 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 2. その後、stable版でも実装されていたが、バイナリ化されていた。
 3. dockercon EU 2018 で発表されてから、gitでも20日程前から公開された。
 
+---
+
 ## アーキテクチャ
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
 <https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md>より引用

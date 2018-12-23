@@ -1,32 +1,34 @@
 # Compose on Kubernetesとは
+
+masaki nakayama
+---
+- docker/compose-on-kubernetes
 https://github.com/docker/compose-on-kubernetes
+- SIMPLIFYING KUBERNETES WITH DOCKER COMPOSE AND FRIENDS
+https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-friends/
 
 >Compose on Kubernetesを使用すると、Docker ComposeファイルをKubernetesクラスタに展開できます。
-
-https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-friends/
 >任意のKubernetesクラスタでこの機能を使用することができます。
-
 >素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となります。そこで、開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化する抽象化を提供します。
 
-# 経緯
+## 経緯
 1. 今年の初めにdockerとKubernetesの統合を進める話があり、docker-for-desktopのedge版ではkube-composeという名前でCRDとして実装されていた。
 2. その後、stable版でも実装されていたが、バイナリ化されていた。
-3. dockercon EU 2018 で発表されてから、gitでも20日程前から公開された。
+3. dockercon EU 2018 で発表されてから、gitでも20日程前から公開された。
 
-# アーキテクチャ
+## アーキテクチャ
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
-
 <https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md>より引用
 
-## サーバーサイド
+### サーバーサイド
 - API server
 - Compose controller
 
-## クライアントサイド
+### クライアントサイド
 Docker CLIの実装
 v1beta1/v2beta2があるが、前者は廃止、後者がデフォルトにする予定
 
-# 現状
+## 現状
 - Docker Desktop と Docker Enterpriseにインストール済
 - AKSには自力でetcdとか色々作成すればインストールできる<https://github.com/docker/compose-on-kubernetes/blob/master/docs/install-on-aks.md>
 - 同じ要領でGKEへのインストールを行ってもうまく動かない(コンポーネントのインストール自体はできるが、`docker stack deploy`時に失敗する)
@@ -36,7 +38,7 @@ v1beta1/v2beta2があるが、前者は廃止、後者がデフォルトにす�
 
 とのこと。順次、対応クラスターが増えていくと思われる。
 
-# docker-for-desktopで試してみた
+## docker-for-desktopで試してみた
 
 compose-on-kuberntesがインストールされていることの確認
 ```
@@ -144,7 +146,7 @@ hellokube    53m
 
 
 
-# 余談：GKEへのインストール
+## 余談：GKEへのインストール
 
 ```
 $ kubectl create namespace compose

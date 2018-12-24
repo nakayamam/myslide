@@ -43,8 +43,8 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 - Compose controller
 
 ### クライアントサイド
-Docker CLIの実装
-v1beta1/v2beta2があるが、前者は廃止、後者がデフォルトにする予定
+- Docker CLIの実装
+- v1beta1/v2beta2があるが、前者は廃止、後者がデフォルトになる予定
 
 ---
 
@@ -94,7 +94,7 @@ NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
 svc/compose-api   ClusterIP   10.106.134.97   <none>        443/TCP   24d
 ```
 ---
-### 下記のdocker-compose.ymlを使用（dockerconのサンプル画面が映るだけのデモアプリ）
+下記のdocker-compose.ymlを使用（dockerconのサンプル画面が映るだけのデモアプリ）
 
 ```
 $ cat docker-compose.yml
@@ -119,7 +119,7 @@ services:
      - "33000:80"
 ```
 ---
-### デプロイする
+デプロイする
 ```
 $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
 Ignoring unsupported options: build

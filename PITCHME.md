@@ -2,18 +2,20 @@
 
 masaki nakayama
 ---
+Compose on Kubernetesとは
+---
 - docker/compose-on-kubernetes
 https://github.com/docker/compose-on-kubernetes
 - SIMPLIFYING KUBERNETES WITH DOCKER COMPOSE AND FRIENDS
 https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-friends/
-
+---
 > Compose on Kubernetesを使用すると、Docker ComposeファイルをKubernetesクラスタに展開できます。
 > 任意のKubernetesクラスタでこの機能を使用することができます。
 > 素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となります。そこで、開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化する抽象化を提供します。
 
 ---
 
-## 経緯
+### 経緯
 1. 今年の初めにdockerとKubernetesの統合を進める話があり、docker-for-desktopのedge版ではkube-composeという名前でCRDとして実装されていた。
 2. その後、stable版でも実装されていたが、バイナリ化されていた。
 3. dockercon EU 2018 で発表されてから、gitでも20日程前から公開された。

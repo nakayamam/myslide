@@ -176,6 +176,7 @@ stackというKubernetesリソースとして作成されている
 $ kubectl get stack
 NAME         AGE
 hellokube    53m
+
 ```
 
 ---

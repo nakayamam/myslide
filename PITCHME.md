@@ -139,6 +139,7 @@ Stack hellokube is stable and running
 
 
 各種Kubernetesリソースが自動作成されている
+
 ```
 $ kubectl get all
 NAME                DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -176,7 +177,6 @@ stackというKubernetesリソースとして作成されている
 $ kubectl get stack
 NAME         AGE
 hellokube    53m
-
 ```
 
 ---

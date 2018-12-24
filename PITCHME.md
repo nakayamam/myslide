@@ -171,6 +171,7 @@ svc/words                  ClusterIP      None             <none>        55555/T
 
 
 stackというKubernetesリソースとして作成されている
+
 ```
 $ kubectl get stack
 NAME         AGE

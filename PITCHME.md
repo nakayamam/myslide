@@ -34,7 +34,8 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 ---
 
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
-<https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md>より引用
+
+https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md より引用
 
 ---
 

@@ -350,16 +350,15 @@ $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
 unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
 ```
 ---
-
 - deployment
 - replicaset
 - service
 - pod
 
 は作成してくれている
-
-あれ、volumeは・・・？
-
+---
+*** あれ、volumeは・・・？ ***
+---
 https://github.com/docker/compose-on-kubernetes/issues/10
 - 実は、データボリュームのマウントを永続的なボリュームクレームとしてすでに変換している。すべてのpvcオプションを公開していないが、今後追加していくつもり
 - ホストバインドは対応している
@@ -378,7 +377,7 @@ services:
 volumes:
   db-data:
 ```
-
+---
 pvcはこんな感じ
 
 ```

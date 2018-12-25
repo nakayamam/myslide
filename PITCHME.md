@@ -177,7 +177,6 @@ NOTES:
 ---
 etcd clusterの作成
 
-@snap[west]compose-etcd.yaml
 ```yaml
 apiVersion: "etcd.database.coreos.com/v1beta2"
 kind: "EtcdCluster"
@@ -188,7 +187,6 @@ spec:
   size: 3
   version: "3.2.13"
 ```
-
 
 ```sh
 $ kubectl apply -f compose-etcd.yaml

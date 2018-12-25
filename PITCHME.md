@@ -1,9 +1,14 @@
 # Compose on Kubernetesとは
 
-masaki nakayama
+Masaki-Nakayama
 
 ---
+## 自己紹介
 
+- レンタルサーバー屋でサービス開発に従事しています
+- 言語は主にphp
+
+---
 ## Compose on Kubernetesとは
 
 ---
@@ -40,13 +45,22 @@ https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md
 ---
 
 ### サーバーサイド
-- API server
+- Compose API server
 - Compose controller
 
 ### クライアントサイド
-- Docker CLIの実装
-- v1beta1/v2beta2があるが、前者は廃止、後者がデフォルトになる予定
+- Docker CLIによる`dockerstack deploy`
+- v1beta1, v2beta2があるが、前者は廃止、後者がデフォルトになる予定
 
+---
+
+## Compose APIサーバー
+- API Aggregationを使用してkube-apiserverと連携することでAPIを拡張することができるカスタム API Server
+- stackの情報を
+---
+## Compose コントローラー
+- Compose APIサーバーからtsack構造体の情報を受け取る
+- それを元にKubernetes APIと通信してKubernetesリソースを作成する
 ---
 
 ## 現状
@@ -400,6 +414,19 @@ web: Ready              [pod status: 1/1 ready, 0/1 pending, 0/1 failed]
 
 Stack hellokube is stable and running
 ```
+---
+EXTERNAL-IP を確認
+```sh
+$ kubectl get svc
+NAME            TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)           AGE
+db              ClusterIP      None          <none>           55555/TCP         4h
+kubernetes      ClusterIP      10.0.0.1      <none>           443/TCP           10h
+web             ClusterIP      None          <none>           55555/TCP         4h
+web-published   LoadBalancer   10.0.69.114   104.42.122.254   33000:32613/TCP   4h
+words           ClusterIP      None          <none>           55555/TCP         4h
+```
+---
+
 
 ---
 

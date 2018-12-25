@@ -17,17 +17,16 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 > 任意のKubernetesクラスタでこの機能を使用することができます。
 > 素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となります。そこで、開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化する抽象化を提供します。
 ---
-## 経緯
+特徴
 ---
-1. 今年の初めにdockerとKubernetesの統合を進める話があり、docker-for-desktopのedge版ではkube-composeという名前でCRDとして実装されていた。
-2. その後、stable版でも実装されていたが、実体はバイナリ化されていた。
-3. 12月のdockercon EU 2018 でcompose on kubernetes発表。gitでも公開された。
+- docker-compose.ymlを元に、`docker stack deploy`でKubernetes環境にデプロイできる（リソースの自動作成）
+- Docker Desktop と Docker Enterpriseにはインストール済
+- マネージドKubernetesサービスに当機能を手動でデプロイ可能
 ---
 ## アーキテクチャ
 ---
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
-
-@size[0.5em] https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md より引用
+https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md より引用
 --
 ### サーバーサイド
 - Compose API server
@@ -45,14 +44,18 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 - Compose APIサーバーからtsack構造体の情報を受け取る
 - それを元にKubernetes APIと通信してKubernetesリソースを作成する
 ---
-## 現状
+## 経緯
 ---
-- Docker Desktop と Docker Enterpriseにインストール済
-- AKSには自力でetcdとか色々作成すればインストールできる<https://github.com/docker/compose-on-kubernetes/blob/master/docs/install-on-aks.md>
+1. 今年の初めにdockerとKubernetesの統合を進める話があり、docker-for-desktopのedge版ではkube-composeという名前でCRDとして実装されていた。
+2. その後、stable版でも実装されていたが、実体はバイナリ化されていた。
+3. 12月のdockercon EU 2018 でcompose on kubernetes発表。gitでも公開された。
+---
+## マネージドKubernetesクラスターへのデプロイ
+---
+- AKSにはデプロイ可能https://github.com/docker/compose-on-kubernetes/blob/master/docs/install-on-aks.md
 - 同じ要領でGKEへのインストールを行ってもうまく動かない(コンポーネントのインストール自体はできるが、`docker stack deploy`時に失敗する)
-<https://github.com/docker/compose-on-kubernetes/issues/21>
+https://github.com/docker/compose-on-kubernetes/issues/21
 
----
 > dokcer-cli自体がgcp認証プロバイダをインポートしないため、cli自体がgkeに対して認証できないことが問題の原因です。cli修正のPRを作成するつもりです。
 とのこと。順次、対応クラスターが増えていくと思われる。
 

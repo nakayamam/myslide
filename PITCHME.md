@@ -303,7 +303,7 @@ spec:
 $ kubectl apply -f compose-etcd.yaml
 etcdcluster.etcd.database.coreos.com/compose-etcd created
 ```
-
+---
 名前空間「compose」にetcdクラスターのリソースができている
 ```sh
 $ kubectl get all -n compose

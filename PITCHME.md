@@ -232,10 +232,10 @@ To prevent this, run `helm init` with the --tiller-tls-verify flag.
 For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
 ```
 ---
-
 ## Deploy etcd operator and create an etcd cluster
+---
+etcd-operatorチャートをhelmでインストール
 
-- install the etcd-operator chart
 ```sh
 $ helm install --name etcd-operator stable/etcd-operator --namespace compose
 NAME:   etcd-operator
@@ -275,6 +275,7 @@ NAME                                               DESIRED  CURRENT  UP-TO-DATE 
 etcd-operator-etcd-operator-etcd-backup-operator   1        1        1           0          1s
 etcd-operator-etcd-operator-etcd-operator          1        1        1           0          1s
 etcd-operator-etcd-operator-etcd-restore-operator  1        1        1           0          1s
+
 
 
 NOTES:

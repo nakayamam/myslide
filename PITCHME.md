@@ -197,19 +197,19 @@ namespace/compose created
 ---
 ### etcdをデプロイ
 
-- tillerサービスアカウントを作成
+tillerサービスアカウントを作成
   ```sh
   $ kubectl -n kube-system create serviceaccount tiller
   serviceaccount/tiller created
   ```
 ---
-- 作成したtillerサービスアカウントにクラスターへのadminto your cluster (note: you might want to reduce the scope of this): kubectl -n kube-system create ---- clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount kube-system:tiller
+作成したtillerサービスアカウントにクラスターへのadminto your cluster (note: you might want to reduce the scope of this): kubectl -n kube-system create ---- clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount kube-system:tiller
 ```sh
 $ kubectl -n kube-system create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount kube-system:tiller
 clusterrolebinding.rbac.authorization.k8s.io/tiller created
 ```
 ---
-- Run helm init --service-account tiller to initialize the helm component.
+Run helm init --service-account tiller to initialize the helm component.
 
 ```sh
 $ helm init --service-account tiller

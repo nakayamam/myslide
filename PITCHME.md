@@ -1,4 +1,4 @@
-# Compose on Kubernetesとは
+# Compose on Kubernetesについて
 
 Masaki-Nakayama
 ---
@@ -17,7 +17,7 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 > 任意のKubernetesクラスタでこの機能を使用することができます。
 > 素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となります。そこで、開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化する抽象化を提供します。
 ---
-特徴
+## 特徴
 ---
 - docker-compose.ymlを元に、`docker stack deploy`でKubernetes環境にデプロイできる（リソースの自動作成）
 - Docker Desktop と Docker Enterpriseにはインストール済
@@ -26,6 +26,7 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 ## アーキテクチャ
 ---
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
+
 https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md より引用
 --
 ### サーバーサイド
@@ -38,7 +39,7 @@ https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md
 ---
 ## Compose APIサーバー
 - API Aggregationを使用してkube-apiserverと連携することでAPIを拡張することができるカスタム API Server
-- stackの情報を
+- stackの情報をetcdに保存する
 ---
 ## Compose コントローラー
 - Compose APIサーバーからtsack構造体の情報を受け取る
@@ -56,6 +57,7 @@ https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md
 - 同じ要領でGKEへのインストールを行ってもうまく動かない(コンポーネントのインストール自体はできるが、`docker stack deploy`時に失敗する)
 https://github.com/docker/compose-on-kubernetes/issues/21
 
+---
 > dokcer-cli自体がgcp認証プロバイダをインポートしないため、cli自体がgkeに対して認証できないことが問題の原因です。cli修正のPRを作成するつもりです。
 とのこと。順次、対応クラスターが増えていくと思われる。
 

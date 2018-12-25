@@ -341,14 +341,6 @@ words           ClusterIP      None          <none>           55555/TCP         
 ![alt](assets/hellokube.png)
 
 ---
-
-## 余談：GKEへのインストール
-compose on kubernetesのインストール自体はAKSと同様の方法でできたが・・・
-```sh
-$ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
-
-unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
-```
 ---
 - deployment
 - replicaset
@@ -362,9 +354,9 @@ unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
 https://github.com/docker/compose-on-kubernetes/issues/10
 - 実は、データボリュームのマウントを永続的なボリュームクレームとしてすでに変換している。すべてのpvcオプションを公開していないが、今後追加していくつもり
 - ホストバインドは対応している
-- 今後のPRで出てくるが、今作ってる内部資料の抜粋では
 
-こんな感じにpv指定できるという
+---
+今後のPRで出てくるが、今作ってる内部資料の抜粋ではこんな感じにpv指定できるという
 
 ```
 version: "3.6"
@@ -391,4 +383,11 @@ services:
         source: /srv/data/static
         target: /opt/app/static
 ```
+---
+## 余談：GKEへのインストール
+compose on kubernetesのインストール自体はAKSと同様の方法でできたが・・・
+```sh
+$ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
 
+unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
+```

@@ -27,7 +27,7 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 ---
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
 
-@size[0.8em]https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md より引用
+@size[0.5em] https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md より引用
 --
 ### サーバーサイド
 - Compose API server
@@ -64,16 +64,22 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 - クライアントにhelmインストール済
 - Compose on Kubernetesインストーラーをダウンロードしていること
 ---
-### 「compose」という名前空間を作成
-
+作業項目
+1. "compose"の名前空間を作成
+2. etcdクラスターを作成
+---
+## "compose"という名前空間を作成
+---
 ```sh
 $ kubectl create namespace compose
 namespace/compose created
 ```
 ---
-### etcdをデプロイ
-
-#### helmのサーバーサイドコンポーネントをインストール
+## etcdをデプロイ
+---
+- helmのサーバーサイドコンポーネントをインストール
+- etcd operatorのデプロイ/etcd clusterの作成
+---
 tiller（helmのデプロイを担うサーバーコンポーネント）を作成
   ```sh
   $ kubectl -n kube-system create serviceaccount tiller
@@ -110,7 +116,8 @@ To prevent this, run `helm init` with the --tiller-tls-verify flag.
 For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
 ```
 ---
-####  etcd operatorのデプロイ/etcd clusterの作成
+##  etcd operatorのデプロイ/etcd clusterの作成
+---
 etcd-operatorチャートをhelmでインストール
 
 ```sh
@@ -165,7 +172,7 @@ NOTES:
 ---
 etcd clusterの作成
 
-compose-etcd.yaml
+@snap[west]compose-etcd.yaml
 ```yaml
 apiVersion: "etcd.database.coreos.com/v1beta2"
 kind: "EtcdCluster"
@@ -271,7 +278,34 @@ v1beta1.compose.docker.com              2018-12-25T10:10:25Z
 v1beta2.compose.docker.com              2018-12-25T10:10:25Z
 ```
 ---
+## docker stack deployしてみる
+---
+下記のdocker-compose.ymlを使用（dockerconのサンプル画面が映るだけのデモアプリ）
 
+```yaml
+version: '3.3'
+
+services:
+
+  db:
+    build: db
+    image: dockersamples/k8s-wordsmith-db
+
+  words:
+    build: words
+    image: dockersamples/k8s-wordsmith-api
+    deploy:
+      replicas: 5
+
+  web:
+    build: web
+    image: dockersamples/k8s-wordsmith-web
+    ports:
+     - "33000:80"
+```
+---
+
+デプロイする
 ```sh
 $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
 Ignoring unsupported options: build
@@ -298,6 +332,7 @@ web-published   LoadBalancer   10.0.69.114   104.42.122.254   33000:32613/TCP   
 words           ClusterIP      None          <none>           55555/TCP         4h
 ```
 @[6]
+
 ---
 アプリが立ち上がっている!
 ![alt](assets/hellokube.png)
@@ -311,6 +346,7 @@ $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
 
 unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
 ```
+---
 
 - deployment
 - replicaset

@@ -399,6 +399,14 @@ replicaset.apps/etcd-operator-etcd-operator-etcd-restore-operator-58587cdccf   1
 
 ```
 ---
+APIServiceができている
+```sh
+$ kubectl get apiservice
+NAME                                    CREATED AT
+v1beta1.compose.docker.com              2018-12-25T10:10:25Z
+v1beta2.compose.docker.com              2018-12-25T10:10:25Z
+```
+---
 
 ```sh
 $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube

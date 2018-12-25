@@ -67,7 +67,7 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 ---
 
 compose-on-kuberntesがインストールされていることの確認
-```
+```sh
 $ kubectl api-versions | grep compose
 compose.docker.com/v1beta1
 compose.docker.com/v1beta2
@@ -76,7 +76,7 @@ compose.docker.com/v1beta2
 ---
 
 compose on kubernetesの各コンポーネントは下記の通りデプロイ済である
-```
+```sh
 $ kubectl get all -n docker
 NAME                 DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 deploy/compose       1         1         1            1           24d
@@ -96,7 +96,7 @@ svc/compose-api   ClusterIP   10.106.134.97   <none>        443/TCP   24d
 ---
 下記のdocker-compose.ymlを使用（dockerconのサンプル画面が映るだけのデモアプリ）
 
-```
+```sh
 $ cat docker-compose.yml
 version: '3.3'
 
@@ -120,7 +120,7 @@ services:
 ```
 ---
 デプロイする
-```
+```sh
 $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
 Ignoring unsupported options: build
 
@@ -140,7 +140,7 @@ Stack hellokube is stable and running
 
 各種Kubernetesリソースが自動作成されている
 
-```
+```sh
 $ kubectl get all
 NAME                DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 deploy/hello-db     1         1         1            1           50m
@@ -173,7 +173,7 @@ svc/words                  ClusterIP      None             <none>        55555/T
 
 stackというKubernetesリソースとして作成されている
 
-```
+```sh
 $ kubectl get stack
 NAME         AGE
 hellokube    53m
@@ -181,9 +181,33 @@ hellokube    53m
 
 ---
 
+## compose on Kubernetes を　AKSにインストール
+---
+前提条件
+- AKSクラスター（RBAC有効）を作成済
+- クライアントにhelmインストール済
+- Compose on Kubernetesインストーラーをダウンロードしていること
+---
+### 1. 「compose」という名前空間を作成
+
+```sh
+$ kubectl create namespace compose
+```
+---
+### 2. etcdをデプロイ
+
+
+
+---
+
+
+
+
+---
+
 ## 余談：GKEへのインストール
 
-```
+```sh
 $ kubectl create namespace compose
 ```
 
@@ -327,3 +351,4 @@ services:
         source: /srv/data/static
         target: /opt/app/static
 ```
+

@@ -18,7 +18,7 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 - docker-compose.ymlを元に、`docker stack deploy`でKubernetes環境にデプロイできる（リソースの自動作成）
 - Docker Desktop と Docker Enterpriseにはインストール済
 - マネージドKubernetesサービスにも当機能を手動でデプロイ可能
-- 素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となるため，開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化・抽象化することを目的としている
+- 素のKubernetesを利用する場合、リソースが多くて管理が大変→開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化・抽象化することを目的としている
 ---
 ## アーキテクチャ
 ---

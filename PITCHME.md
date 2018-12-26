@@ -70,9 +70,9 @@ https://github.com/docker/compose-on-kubernetes/issues/21
 作業項目
 1. "compose"の名前空間を作成
 2. etcdクラスターを作成
+3. Compose on Kubernetesをインストーラーを使用してデプロイ 
 ---
-## "compose"という名前空間を作成
----
+### "compose"の名前空間を作成
 ```sh
 $ kubectl create namespace compose
 namespace/compose created

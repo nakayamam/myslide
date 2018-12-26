@@ -56,6 +56,7 @@ https://github.com/docker/compose-on-kubernetes/issues/21
 
 ---
 > dokcer-cli自体がgcp認証プロバイダをインポートしないため、cli自体がgkeに対して認証できないことが問題の原因です。cli修正のPRを作成するつもりです。
+
 とのこと。順次、対応クラスターが増えていくと思われる。
 
 ---

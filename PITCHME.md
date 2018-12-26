@@ -23,8 +23,8 @@ https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-f
 ## アーキテクチャ
 ---
 <img src="https://github.com/docker/compose-on-kubernetes/blob/master/docs/images/architecture.jpg?raw=true">
-
 https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md より引用
+
 --
 ### サーバーサイド
 - Compose API server
@@ -39,7 +39,7 @@ https://github.com/docker/compose-on-kubernetes/blob/master/docs/architecture.md
 - stackの情報をetcdに保存する
 ---
 ## Compose コントローラー
-- Compose APIサーバーからtsack構造体の情報を受け取る
+- Compose APIサーバーからstack構造体の情報を受け取る
 - それを元にKubernetes APIと通信してKubernetesリソースを作成する
 ---
 ## 経緯

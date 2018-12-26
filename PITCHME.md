@@ -386,4 +386,5 @@ words           ClusterIP      None          <none>           55555/TCP         
 *** あれ、volumeは・・・？ ***
 ---
 https://github.com/docker/compose-on-kubernetes/issues/10
-- 今後のPRで追加していくつもり！
+![alt](assets/volume.png)
+今後のPRで追加していくつもり！

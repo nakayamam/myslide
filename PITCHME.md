@@ -339,9 +339,8 @@ words           ClusterIP      None          <none>           55555/TCP         
 ---
 アプリが立ち上がっている!
 ![alt](assets/hellokube.png)
-
 ---
----
+`docker stack deploy`によって
 - deployment
 - replicaset
 - service

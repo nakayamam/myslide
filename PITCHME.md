@@ -13,8 +13,6 @@ docker/compose-on-kubernetes
 https://github.com/docker/compose-on-kubernetes
 ![alt](assets/composeonk8s.png)
 ---
-## 特徴
----
 - docker-compose.ymlを元に、`docker stack deploy`でKubernetes環境にデプロイできる（リソースの自動作成）
 - Docker Desktop と Docker Enterpriseにはインストール済
 - マネージドKubernetesサービスにも当機能を手動でデプロイ可能

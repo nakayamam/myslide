@@ -11,6 +11,7 @@ Masaki Nakayama
 ---
 - docker/compose-on-kubernetes
 https://github.com/docker/compose-on-kubernetes
+![alt](assets/composeonk8s.png)
 - SIMPLIFYING KUBERNETES WITH DOCKER COMPOSE AND FRIENDS
 https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-friends/
 ---

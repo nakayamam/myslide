@@ -56,9 +56,10 @@ https://github.com/docker/compose-on-kubernetes/issues/21
 
 ---
 実際GKEにやってみた
+```sh
 $ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
 unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
-
+```
 ---
 > dokcer-cli自体がgcp認証プロバイダをインポートしないため、cli自体がgkeに対して認証できないことが問題の原因です。cli修正のPRを作成するつもりです。
 

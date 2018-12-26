@@ -8,6 +8,7 @@ Masaki Nakayama
 ### dockercon2018 EUで発表
 SIMPLIFYING KUBERNETES WITH DOCKER COMPOSE AND FRIENDS
 https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-friends/
+---
 ![alt](assets/dockerblog.png)
 ---
 docker/compose-on-kubernetes

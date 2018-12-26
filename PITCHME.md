@@ -67,12 +67,12 @@ unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
 ---
 ## compose on KubernetesをAKSにインストール
 ---
-前提条件
+### 前提条件
 - AKSクラスター（RBAC有効）を作成済
 - クライアントにhelmインストール済
 - Compose on Kubernetesインストーラーをダウンロードしていること
 ---
-作業項目
+### 作業項目
 1. "compose"の名前空間を作成
 2. etcdクラスターを作成
 3. Compose on Kubernetesをインストーラーを使用してデプロイ 

@@ -3,10 +3,6 @@
 
 Masaki Nakayama
 ---
-## 自己紹介
-- レンタルサーバー屋でサービス開発に従事しています
-- 言語は主にphp
----
 ## Compose on Kubernetesとは
 ---
 - docker/compose-on-kubernetes

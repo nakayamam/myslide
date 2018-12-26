@@ -1,6 +1,7 @@
-# Compose on Kubernetesについて
+## Compose on Kubernetesについて
+### Docker Kansai Meetup #2
 
-Masaki-Nakayama
+Masaki Nakayama
 ---
 ## 自己紹介
 - レンタルサーバー屋でサービス開発に従事しています

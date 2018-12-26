@@ -13,15 +13,12 @@ https://github.com/docker/compose-on-kubernetes
 - SIMPLIFYING KUBERNETES WITH DOCKER COMPOSE AND FRIENDS
 https://blog.docker.com/2018/12/simplifying-kubernetes-with-docker-compose-and-friends/
 ---
-> Compose on Kubernetesを使用すると、Docker ComposeファイルをKubernetesクラスタに展開できます。
-> 任意のKubernetesクラスタでこの機能を使用することができます。
-> 素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となります。そこで、開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化する抽象化を提供します。
----
 ## 特徴
 ---
 - docker-compose.ymlを元に、`docker stack deploy`でKubernetes環境にデプロイできる（リソースの自動作成）
 - Docker Desktop と Docker Enterpriseにはインストール済
-- マネージドKubernetesサービスに当機能を手動でデプロイ可能
+- マネージドKubernetesサービスにも当機能を手動でデプロイ可能
+- 素のKubernetesを利用する場合、かなり多くのリソースを管理しなければならず、開発者にとって負担となるため，開発者が簡単に扱えることを重視したcomposeを組み合わせ、Kubernetesの設定を簡素化・抽象化することを目的としている
 ---
 ## アーキテクチャ
 ---
@@ -351,8 +348,7 @@ words           ClusterIP      None          <none>           55555/TCP         
 *** あれ、volumeは・・・？ ***
 ---
 https://github.com/docker/compose-on-kubernetes/issues/10
-今後のPRで追加していくつもり！
-
+- 今後のPRで追加していくつもり！
 ---
 今後のPRで出てくるが、今作ってる内部資料の抜粋ではこんな感じにpv指定できるという
 

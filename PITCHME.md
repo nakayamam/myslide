@@ -322,6 +322,45 @@ web: Ready              [pod status: 1/1 ready, 0/1 pending, 0/1 failed]
 Stack hellokube is stable and running
 ```
 ---
+stackができている
+```sh
+$ kubectl get stack
+NAME         SERVICES   PORTS              STATUS                            CREATED AT
+hellokube    3          web: 33000         Available (Stack is started)      2018-12-25T10:19:00Z
+```
+---
+各種Kubernetesリソースが作成されている
+
+```sh
+$ kubectl get all
+NAME                             READY     STATUS                       RESTARTS   AGE
+pod/db-6d9f665b97-jr6ql          1/1       Running                      0          23h
+pod/web-786c88c676-c68ff         1/1       Running                      0          23h
+pod/words-7d88595b-btmzj         1/1       Running                      0          23h
+pod/words-7d88595b-c7gf9         1/1       Running                      0          23h
+pod/words-7d88595b-gdxj4         1/1       Running                      0          23h
+pod/words-7d88595b-wjvf5         1/1       Running                      0          23h
+pod/words-7d88595b-x4n49         1/1       Running                      0          23h
+
+NAME                           TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)           AGE
+service/db                     ClusterIP      None          <none>           55555/TCP         23h
+service/kubernetes             ClusterIP      10.0.0.1      <none>           443/TCP           1d
+service/web                    ClusterIP      None          <none>           55555/TCP         23h
+service/web-published          LoadBalancer   10.0.69.114   104.42.122.254   33000:32613/TCP   23h
+service/words                  ClusterIP      None          <none>           55555/TCP         23h
+
+NAME                         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/db           1         1         1            1           23h
+deployment.apps/web          1         1         1            1           23h
+deployment.apps/words        5         5         5            5           23h
+
+NAME                                    DESIRED   CURRENT   READY     AGE
+replicaset.apps/db-6d9f665b97           1         1         1         23h
+replicaset.apps/web-786c88c676          1         1         1         23h
+replicaset.apps/words-7d88595b          5         5         5         23h
+```
+
+---
 EXTERNAL-IP を確認
 ```sh
 $ kubectl get svc
@@ -350,39 +389,3 @@ words           ClusterIP      None          <none>           55555/TCP         
 ---
 https://github.com/docker/compose-on-kubernetes/issues/10
 - 今後のPRで追加していくつもり！
----
-今後のPRで出てくるが、今作ってる内部資料の抜粋ではこんな感じにpv指定できるという
-
-```
-version: "3.6"
-
-services:
-  mysql:
-    volumes:
-      - db-data:/var/lib/mysql
-
-volumes:
-  db-data:
-```
----
-pvcはこんな感じ
-
-```
-version: "3.6"
-
-services:
-  web:
-    image: nginx:alpine
-    volumes:
-      - type: bind
-        source: /srv/data/static
-        target: /opt/app/static
-```
----
-## 余談：GKEへのインストール
-compose on kubernetesのインストール自体はAKSと同様の方法でできたが・・・
-```sh
-$ docker stack deploy --orchestrator=kubernetes -c docker-compose.yml hellokube
-
-unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
-```

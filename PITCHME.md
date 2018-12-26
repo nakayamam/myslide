@@ -1,7 +1,5 @@
 ## Compose on Kubernetesについて
-
-
-Docker Kansai Meetup #2  2018.12.26
+#### Docker Kansai Meetup #2
 Masaki Nakayama
 
 ---

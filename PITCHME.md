@@ -506,7 +506,7 @@ NOTES:
 ```
 
 ```
-kubectl create clusterrolebinding myname-cluster-admin-binding --clusterrole=cluster-admin --user=m.nakayama1023@gmail.com
+kubectl create clusterrolebinding myaccount-cluster-admin-binding --clusterrole=cluster-admin --user=myaccount
 ```
 
 ```

@@ -547,17 +547,11 @@ unable to deploy to Kubernetes: No Auth Provider found for name "gcp"
 - replicaset
 - service
 - pod
-  
-は作成してくれている
+ -volume  
+を自動作成してくれている
 
-あれ、volumeは・・・？
 
-https://github.com/docker/compose-on-kubernetes/issues/10
-- 実は、データボリュームのマウントを永続的なボリュームクレームとしてすでに変換している。すべてのpvcオプションを公開していないが、今後追加していくつもり
-- ホストバインドは対応している
-- 今後のPRで出てくるが、今作ってる内部資料の抜粋では
-
-こんな感じにpv指定できるという
+こんな感じにpv指定できる
 
 ```
 version: "3.6"
@@ -570,18 +564,3 @@ services:
 volumes:
   db-data:
 ```
-
-pvcはこんな感じ
-
-```
-version: "3.6"
-
-services:
-  web:
-    image: nginx:alpine
-    volumes:
-      - type: bind
-        source: /srv/data/static
-        target: /opt/app/static
-```
-

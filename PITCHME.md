@@ -350,7 +350,7 @@ replicaset.apps/etcd-operator-etcd-operator-etcd-restore-operator-58587cdccf   1
 
 compose-on-kubernetesをインストール（※Cloud Shellでバイナリ認識できなかったのでmacからaksクラスター指定してインストールさせてます）
 ```sh
-$ ./installer-darwin -namespace=compose -etcd-servers=http://compose-etcd-client:2379 -tag=v0.4.16 -skip-liveness-probes=true --kubeconfig=/Users/nakayama/.kube/aksconfig
+$ ./installer-darwin -namespace=compose -etcd-servers=http://compose-etcd-client:2379 -tag=v0.4.16 -skip-liveness-probes=true --kubeconfig=/Users/username/.kube/aksconfig
 INFO[0000] Checking installation state
 INFO[0001] Install image with tag "v0.4.16" in namespace "compose"
 INFO[0003] Api server: image: "docker/kube-compose-api-server:v0.4.16", pullPolicy: "Always"
